@@ -17,6 +17,20 @@ class EarthQuakeTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func testGetData() throws {
+        let now = Int(Date().timeIntervalSince1970)
+        let exp = expectation(description: "getData")
+        DataService.shared.getData(startTime: now, endTime: now - 300000) { result in
+            switch result {
+            case .success(let data):
+                exp.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        waitForExpectations(timeout: 10)
+    }
 
     func testExample() throws {
         // This is an example of a functional test case.
