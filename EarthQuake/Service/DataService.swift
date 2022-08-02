@@ -23,25 +23,45 @@ class DataService {
     // prevent direct instantiation
     private init() {}
 
-    /// 
+    /// Gets earthquake data for the given time parameters
     func getData(startTime: Epoch, endTime: Epoch, completion: @escaping DataServiceResult) {
         let url = makeUrl(startTime: startTime, endTime: endTime)
+        print("getData: \(url.absoluteString)")
         session.dataTask(with: url) { data, resp, error in
-            print("complete")
-            if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(EarthQuakeData.self, from: data)
-                    completion(.success(result))
-                }
-                catch {
+            // ensure response is HTTPURLResponse
+            guard let resp = resp as? HTTPURLResponse else {
+                if let error = error {
                     completion(.failure(error))
                 }
+                else {
+                    completion(.failure(NSError(domain: "Unexpected error", code: 0)))
+                }
+                return
+            }
+            // check that response code is HTTP 200
+            if resp.statusCode != 200 {
+                completion(.failure(NSError(domain: "Unexpected HTTP error code", code: resp.statusCode)))
+            }
+            guard let data = data else {
+                completion(.failure(NSError(domain: "No data", code: 0)))
+                return
+            }
+            do {
+                let result = try JSONDecoder().decode(EarthQuakeData.self, from: data)
+                completion(.success(result))
+            }
+            catch {
+                // json decoding failed for some reason
+                print(error)
+                completion(.failure(error))
             }
         }.resume()
     }
     
-    private func makeUrl(startTime: Int, endTime: Int) -> URL {
-        let url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02"
+    /// Returns URL with given time filters
+    private func makeUrl(startTime: Epoch, endTime: Epoch) -> URL {
+        // for now, requesting just 3.0 or higher magnitude quakes 
+        let url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime.iso8601())&endtime=\(endTime.iso8601())&minmagnitude=3.0"
         return URL(string: url)!
     }
 }

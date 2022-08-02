@@ -19,8 +19,9 @@
 		D2D907D928946365009EED99 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907D828946365009EED99 /* DataService.swift */; };
 		D2D907DC28946833009EED99 /* EarthQuakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907DB28946833009EED99 /* EarthQuakeData.swift */; };
 		D2D907DF28948B23009EED99 /* DataServiceMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907DE28948B23009EED99 /* DataServiceMgr.swift */; };
-		D2D907E2289493A1009EED99 /* IntExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907E1289493A1009EED99 /* IntExt.swift */; };
-		D2D907E428949589009EED99 /* TimeIntervalExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907E328949589009EED99 /* TimeIntervalExt.swift */; };
+		D2D907E2289493A1009EED99 /* EpochExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907E1289493A1009EED99 /* EpochExt.swift */; };
+		D2D907EC2894CDC9009EED99 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907EA2894CDC9009EED99 /* EventCell.swift */; };
+		D2D907ED2894CDC9009EED99 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D907EB2894CDC9009EED99 /* EventCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +58,9 @@
 		D2D907D828946365009EED99 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D2D907DB28946833009EED99 /* EarthQuakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthQuakeData.swift; sourceTree = "<group>"; };
 		D2D907DE28948B23009EED99 /* DataServiceMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceMgr.swift; sourceTree = "<group>"; };
-		D2D907E1289493A1009EED99 /* IntExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExt.swift; sourceTree = "<group>"; };
-		D2D907E328949589009EED99 /* TimeIntervalExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExt.swift; sourceTree = "<group>"; };
+		D2D907E1289493A1009EED99 /* EpochExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpochExt.swift; sourceTree = "<group>"; };
+		D2D907EA2894CDC9009EED99 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		D2D907EB2894CDC9009EED99 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +111,8 @@
 		D2D907A728946256009EED99 /* EarthQuake */ = {
 			isa = PBXGroup;
 			children = (
-				D2D907E02894938F009EED99 /* Utils */,
+				D2D907E52894BCE2009EED99 /* View */,
+				D2D907E02894938F009EED99 /* Util */,
 				D2D907DD28946A61009EED99 /* Service */,
 				D2D907DA289463A9009EED99 /* Model */,
 				D2D907A828946256009EED99 /* AppDelegate.swift */,
@@ -157,13 +160,21 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		D2D907E02894938F009EED99 /* Utils */ = {
+		D2D907E02894938F009EED99 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				D2D907E1289493A1009EED99 /* IntExt.swift */,
-				D2D907E328949589009EED99 /* TimeIntervalExt.swift */,
+				D2D907E1289493A1009EED99 /* EpochExt.swift */,
 			);
-			path = Utils;
+			path = Util;
+			sourceTree = "<group>";
+		};
+		D2D907E52894BCE2009EED99 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2D907EA2894CDC9009EED99 /* EventCell.swift */,
+				D2D907EB2894CDC9009EED99 /* EventCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2D907ED2894CDC9009EED99 /* EventCell.xib in Resources */,
 				D2D907B52894625A009EED99 /* LaunchScreen.storyboard in Resources */,
 				D2D907B22894625A009EED99 /* Assets.xcassets in Resources */,
 				D2D907B028946256009EED99 /* Main.storyboard in Resources */,
@@ -298,11 +310,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2D907DC28946833009EED99 /* EarthQuakeData.swift in Sources */,
-				D2D907E2289493A1009EED99 /* IntExt.swift in Sources */,
+				D2D907EC2894CDC9009EED99 /* EventCell.swift in Sources */,
+				D2D907E2289493A1009EED99 /* EpochExt.swift in Sources */,
 				D2D907AD28946256009EED99 /* ViewController.swift in Sources */,
 				D2D907DF28948B23009EED99 /* DataServiceMgr.swift in Sources */,
 				D2D907A928946256009EED99 /* AppDelegate.swift in Sources */,
-				D2D907E428949589009EED99 /* TimeIntervalExt.swift in Sources */,
 				D2D907AB28946256009EED99 /* SceneDelegate.swift in Sources */,
 				D2D907D928946365009EED99 /* DataService.swift in Sources */,
 			);

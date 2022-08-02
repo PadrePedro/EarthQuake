@@ -19,9 +19,9 @@ class EarthQuakeTests: XCTestCase {
     }
     
     func testGetData() throws {
-        let now = Int(Date().timeIntervalSince1970)
+        let now = Epoch.now()
         let exp = expectation(description: "getData")
-        DataService.shared.getData(startTime: now, endTime: now - 300000) { result in
+        DataService.shared.getData(startTime: now.delta(days: -1), endTime: now) { result in
             switch result {
             case .success(let data):
                 exp.fulfill()
