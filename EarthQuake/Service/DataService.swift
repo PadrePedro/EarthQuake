@@ -48,6 +48,7 @@ class DataService {
             }
             do {
                 let result = try JSONDecoder().decode(EarthQuakeData.self, from: data)
+                print ("retrieved \(result.features.count) records")
                 completion(.success(result))
             }
             catch {
@@ -64,4 +65,6 @@ class DataService {
         let url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime.iso8601())&endtime=\(endTime.iso8601())&minmagnitude=3.0"
         return URL(string: url)!
     }
+    
+    
 }

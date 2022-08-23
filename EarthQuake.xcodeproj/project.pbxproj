@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D240655D28B43591008AE5C2 /* LiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240655C28B43591008AE5C2 /* LiveData.swift */; };
 		D2D907A928946256009EED99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907A828946256009EED99 /* AppDelegate.swift */; };
 		D2D907AB28946256009EED99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907AA28946256009EED99 /* SceneDelegate.swift */; };
 		D2D907AD28946256009EED99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907AC28946256009EED99 /* ViewController.swift */; };
@@ -18,10 +19,10 @@
 		D2D907CC2894625B009EED99 /* EarthQuakeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907CB2894625B009EED99 /* EarthQuakeUITestsLaunchTests.swift */; };
 		D2D907D928946365009EED99 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907D828946365009EED99 /* DataService.swift */; };
 		D2D907DC28946833009EED99 /* EarthQuakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907DB28946833009EED99 /* EarthQuakeData.swift */; };
-		D2D907DF28948B23009EED99 /* DataServiceMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907DE28948B23009EED99 /* DataServiceMgr.swift */; };
 		D2D907E2289493A1009EED99 /* EpochExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907E1289493A1009EED99 /* EpochExt.swift */; };
 		D2D907EC2894CDC9009EED99 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907EA2894CDC9009EED99 /* EventCell.swift */; };
 		D2D907ED2894CDC9009EED99 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D907EB2894CDC9009EED99 /* EventCell.xib */; };
+		D2D907F2289C3604009EED99 /* EarthQuakeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D907F1289C3603009EED99 /* EarthQuakeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D240655C28B43591008AE5C2 /* LiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveData.swift; sourceTree = "<group>"; };
 		D2D907A528946256009EED99 /* EarthQuake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthQuake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2D907A828946256009EED99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2D907AA28946256009EED99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,10 +59,10 @@
 		D2D907CB2894625B009EED99 /* EarthQuakeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthQuakeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D2D907D828946365009EED99 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D2D907DB28946833009EED99 /* EarthQuakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthQuakeData.swift; sourceTree = "<group>"; };
-		D2D907DE28948B23009EED99 /* DataServiceMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceMgr.swift; sourceTree = "<group>"; };
 		D2D907E1289493A1009EED99 /* EpochExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpochExt.swift; sourceTree = "<group>"; };
 		D2D907EA2894CDC9009EED99 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		D2D907EB2894CDC9009EED99 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		D2D907F1289C3603009EED99 /* EarthQuakeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthQuakeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		D2D907A728946256009EED99 /* EarthQuake */ = {
 			isa = PBXGroup;
 			children = (
+				D2D907F0289C35DE009EED99 /* ViewModel */,
 				D2D907E52894BCE2009EED99 /* View */,
 				D2D907E02894938F009EED99 /* Util */,
 				D2D907DD28946A61009EED99 /* Service */,
@@ -155,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				D2D907D828946365009EED99 /* DataService.swift */,
-				D2D907DE28948B23009EED99 /* DataServiceMgr.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -175,6 +177,15 @@
 				D2D907EB2894CDC9009EED99 /* EventCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D2D907F0289C35DE009EED99 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D2D907F1289C3603009EED99 /* EarthQuakeViewModel.swift */,
+				D240655C28B43591008AE5C2 /* LiveData.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,10 +324,11 @@
 				D2D907EC2894CDC9009EED99 /* EventCell.swift in Sources */,
 				D2D907E2289493A1009EED99 /* EpochExt.swift in Sources */,
 				D2D907AD28946256009EED99 /* ViewController.swift in Sources */,
-				D2D907DF28948B23009EED99 /* DataServiceMgr.swift in Sources */,
 				D2D907A928946256009EED99 /* AppDelegate.swift in Sources */,
 				D2D907AB28946256009EED99 /* SceneDelegate.swift in Sources */,
+				D240655D28B43591008AE5C2 /* LiveData.swift in Sources */,
 				D2D907D928946365009EED99 /* DataService.swift in Sources */,
+				D2D907F2289C3604009EED99 /* EarthQuakeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

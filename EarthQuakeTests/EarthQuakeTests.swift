@@ -34,32 +34,19 @@ class EarthQuakeTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    /// Test getInitialData and getOlderData, to mimic user paging down through records
-    func testDataServiceMgr() throws {
-        let exp = expectation(description: "testDataServiceMgr")
-        DataServiceMgr.shared.getInitialData { result in
-            switch result {
-            case .success(let resp):
-                DataServiceMgr.shared.getOlderData { result in
-                    switch result {
-                    case .success(let resp):
-                        var lastTime = Int.max
-                        for i in resp {
-                            if i.properties.time > lastTime {
-                                XCTFail("values not in descending order")
-                                break
-                            }
-                            lastTime = i.properties.time
-                        }
-                        exp.fulfill()
-                    case .failure(let error):
-                        XCTFail(error.localizedDescription)
-                    }
-                }
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
+    func testInitialData() throws {
+        let exp = expectation(description: "testInitialData")
+        let viewModel = EarthQuakeViewModel()
+        viewModel.features.bind { features in
+            if features.count > 0 {
+                exp.fulfill()
             }
         }
+        viewModel.errorMessage.bind { error in
+            print(error)
+            XCTFail("failed to retrieve data")
+        }
+        viewModel.getInitialData()
         waitForExpectations(timeout: 10)
     }
 
