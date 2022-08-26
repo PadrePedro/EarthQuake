@@ -14,11 +14,16 @@ class EarthQuakeViewModel {
     var features: LiveData<[Feature]> = LiveData([Feature]())
     /// error message from failed REST call
     var errorMessage: LiveData<String?> = LiveData(nil)
+    var dataService: DataServiceInterface
+    
+    init(_ dataService: DataServiceInterface) {
+        self.dataService = dataService
+    }
     
     /// Returns initial dataset upon app launch.  Currently returning data up to one day ago
     func getInitialData() {
         let now = Epoch.now()
-        DataService.shared.getData(startTime: now.delta(days: -1), endTime: now) { [weak self] result in
+        dataService.getData(startTime: now.delta(days: -1), endTime: now) { [weak self] result in
             switch result {
             case .success(let resp):
                 self?.features.value = resp.features
@@ -37,7 +42,7 @@ class EarthQuakeViewModel {
             return Epoch.now()
         }()
         let startTime = endTime.delta(days: -1)
-        DataService.shared.getData(startTime: startTime, endTime: endTime) { [weak self] result in
+        dataService.getData(startTime: startTime, endTime: endTime) { [weak self] result in
             switch result {
             case .success(let resp):
                 self?.features.value += resp.features
@@ -55,7 +60,7 @@ class EarthQuakeViewModel {
             return
         }
         let endTime = Epoch.now()
-        DataService.shared.getData(startTime: mostRecentTime + 1000, endTime: endTime) { [weak self] result in
+        dataService.getData(startTime: mostRecentTime + 1000, endTime: endTime) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):

@@ -1,9 +1,3 @@
-//
-//  EarthQuakeTests.swift
-//  EarthQuakeTests
-//
-//  Created by Peter Liaw on 7/29/22.
-//
 
 import XCTest
 @testable import EarthQuake
@@ -36,7 +30,7 @@ class EarthQuakeTests: XCTestCase {
     
     func testInitialData() throws {
         let exp = expectation(description: "testInitialData")
-        let viewModel = EarthQuakeViewModel()
+        let viewModel = EarthQuakeViewModel(DataService.shared)
         viewModel.features.bind { features in
             if features.count > 0 {
                 exp.fulfill()

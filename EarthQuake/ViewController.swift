@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     let tableView = UITableView()
     let refreshControl = UIRefreshControl()
-    var viewModel = EarthQuakeViewModel()
+    var viewModel = EarthQuakeViewModel(DataService.shared)
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,10 +9,15 @@ import Foundation
 
 typealias DataServiceResult = (Result<EarthQuakeData,Error>)->Void
 
+protocol DataServiceInterface {
+    func getData(startTime: Epoch, endTime: Epoch, completion: @escaping DataServiceResult)
+    
+}
+
 /// The `DataService` class is responsible for retrieving data from the earthquake REST API.
 /// The resulting data is provided in `DataServiceResult`.
 /// This class not does hold onto any data.
-class DataService {
+class DataService: DataServiceInterface {
     
     /// global shared instance
     static let shared = DataService()
